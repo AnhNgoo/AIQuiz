@@ -1,0 +1,85 @@
+BÀI HỌC: BẢY NGUYÊN TẮC KIỂM THỬ PHẦN MỀM
+
+I. GIỚI THIỆU
+
+Kiểm thử phần mềm là một hoạt động quan trọng trong quy trình phát triển phần mềm, giúp đảm bảo chất lượng sản phẩm trước khi đến tay người dùng. Để kiểm thử hiệu quả, các chuyên gia đã đúc kết 7 nguyên tắc cơ bản.
+
+II. BẢY NGUYÊN TẮC KIỂM THỬ
+
+1. Nguyên tắc 1: Kiểm thử chứng tỏ sự hiện diện của lỗi (Testing shows the presence of defects)
+Kiểm thử có thể chỉ ra rằng các lỗi tồn tại, nhưng không thể chứng minh rằng không có lỗi. Kiểm thử làm giảm xác suất các lỗi chưa được phát hiện vẫn còn trong phần mềm, nhưng ngay cả khi không tìm thấy lỗi nào, nó cũng không phải là bằng chứng chứng minh sự chính xác.
+
+2. Nguyên tắc 2: Kiểm thử toàn diện là không thể (Exhaustive testing is impossible)
+Kiểm thử mọi thứ (tất cả các tổ hợp đầu vào và điều kiện) là không khả thi trừ các trường hợp tầm thường. Thay vì kiểm thử toàn diện, phân tích rủi ro và ưu tiên nên được sử dụng để tập trung các nỗ lực kiểm thử.
+
+3. Nguyên tắc 3: Kiểm thử sớm (Early testing)
+Các hoạt động kiểm thử nên bắt đầu càng sớm càng tốt trong chu kỳ phát triển phần mềm và nên tập trung vào các mục tiêu đã xác định. Chi phí để sửa lỗi tăng theo thời gian, vì vậy phát hiện sớm giúp tiết kiệm chi phí.
+
+4. Nguyên tắc 4: Lỗi tập trung (Defect clustering)
+Một số lượng nhỏ các module chứa hầu hết các lỗi được phát hiện trong quá trình kiểm thử trước khi phát hành hoặc thể hiện hầu hết các lỗi hoạt động. Hiện tượng này tuân theo nguyên tắc Pareto: 80% lỗi có thể tập trung trong 20% module.
+
+5. Nguyên tắc 5: Nghịch lý thuốc trừ sâu (Pesticide paradox)
+Nếu các bài kiểm thử giống nhau được lặp đi lặp lại nhiều lần, cuối cùng cùng một bộ các trường hợp kiểm thử sẽ không còn tìm thấy bất kỳ lỗi mới nào. Để khắc phục nghịch lý này, các trường hợp kiểm thử cần được xem xét và sửa đổi thường xuyên.
+
+6. Nguyên tắc 6: Kiểm thử phụ thuộc vào bối cảnh (Testing is context dependent)
+Kiểm thử được thực hiện khác nhau trong các bối cảnh khác nhau. Ví dụ, phần mềm quan trọng về an toàn được kiểm thử khác với trang web thương mại điện tử. Phần mềm y tế cần kiểm thử nghiêm ngặt hơn ứng dụng game.
+
+7. Nguyên tắc 7: Ảo tưởng không có lỗi (Absence-of-errors fallacy)
+Việc tìm và sửa lỗi không giúp ích gì nếu hệ thống được xây dựng không sử dụng được hoặc không đáp ứng nhu cầu và kỳ vọng của người dùng. Phần mềm không có lỗi vẫn có thể không hữu ích nếu không đáp ứng yêu cầu người dùng.
+
+III. CÂU HỎI ÔN TẬP
+
+Câu 1: Bảy nguyên tắc kiểm thử phần mềm là gì? Theo bạn, 3 nguyên tắc nào quan trọng nhất và tại sao?
+
+Đáp án: Bảy nguyên tắc kiểm thử phần mềm bao gồm:
+1. Kiểm thử chứng tỏ sự hiện diện của lỗi
+2. Kiểm thử toàn diện là không thể
+3. Kiểm thử sớm
+4. Lỗi tập trung
+5. Nghịch lý thuốc trừ sâu
+6. Kiểm thử phụ thuộc vào bối cảnh
+7. Ảo tưởng không có lỗi
+
+Ba nguyên tắc quan trọng nhất có thể là:
+- Kiểm thử sớm: Giúp phát hiện lỗi sớm, tiết kiệm chi phí sửa lỗi
+- Lỗi tập trung: Giúp tập trung nguồn lực kiểm thử vào các module nguy hiểm
+- Kiểm thử phụ thuộc vào bối cảnh: Đảm bảo chiến lược kiểm thử phù hợp với từng loại phần mềm
+
+Câu 2: Tại sao kiểm thử toàn diện là không thể? Giải pháp nào được đề xuất để khắc phục điều này?
+
+Đáp án: Kiểm thử toàn diện là không thể vì:
+- Số lượng tổ hợp đầu vào và điều kiện là vô hạn hoặc rất lớn
+- Không đủ thời gian và nguồn lực để kiểm thử tất cả các trường hợp
+- Chi phí sẽ quá cao nếu thực hiện kiểm thử toàn diện
+
+Giải pháp được đề xuất:
+- Sử dụng phân tích rủi ro để xác định các khu vực ưu tiên
+- Áp dụng các kỹ thuật thiết kế test case như phân vùng tương đương, phân tích giá trị biên
+- Tập trung vào các chức năng quan trọng và use case phổ biến
+- Sử dụng kiểm thử dựa trên rủi ro
+
+Câu 3: Nghịch lý thuốc trừ sâu (Pesticide paradox) là gì? Làm thế nào để khắc phục nó?
+
+Đáp án: Nghịch lý thuốc trừ sâu là hiện tượng khi các bài kiểm thử giống nhau được lặp đi lặp lại nhiều lần, cuối cùng cùng một bộ các trường hợp kiểm thử sẽ không còn tìm thấy bất kỳ lỗi mới nào. Tương tự như côn trùng phát triển khả năng kháng thuốc trừ sâu.
+
+Cách khắc phục:
+- Xem xét và cập nhật các test case thường xuyên
+- Bổ sung các test case mới dựa trên các kịch bản mới
+- Thay đổi dữ liệu test để tăng độ bao phủ
+- Sử dụng các kỹ thuật kiểm thử khác nhau (exploratory testing, automation testing)
+- Học hỏi từ các lỗi đã phát hiện để tạo test case tốt hơn
+
+Câu 4: So sánh sự khác biệt giữa nguyên tắc "Kiểm thử chứng tỏ sự hiện diện của lỗi" và "Ảo tưởng không có lỗi"?
+
+Đáp án: 
+Nguyên tắc "Kiểm thử chứng tỏ sự hiện diện của lỗi":
+- Nhấn mạnh rằng kiểm thử chỉ có thể tìm thấy lỗi, không thể chứng minh không có lỗi
+- Tập trung vào khả năng phát hiện lỗi của kiểm thử
+- Cảnh báo không nên tin rằng "không tìm thấy lỗi = không có lỗi"
+
+Nguyên tắc "Ảo tưởng không có lỗi":
+- Nhấn mạnh rằng phần mềm không có lỗi vẫn có thể thất bại
+- Tập trung vào việc đáp ứng nhu cầu người dùng
+- Cảnh báo không nên chỉ tập trung vào tìm lỗi mà quên mất mục tiêu cuối cùng là làm hài lòng người dùng
+
+Điểm chung: Cả hai đều cảnh báo về những ảo tưởng sai lầm trong kiểm thử phần mềm.

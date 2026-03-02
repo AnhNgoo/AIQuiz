@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI Quiz Chat-bot | AGDev</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-brand">
+                <h1>🎓 AI Quiz Bot</h1>
+                <span class="badge">PRO</span>
+            </div>
+            <button class="btn-icon" id="openSettingsBtn" title="Cài đặt">⚙️</button>
+        </header>
+
+        <!-- SCREEN 1: WELCOME & INPUT -->
+        <div id="welcomeScreen" class="screen active">
+            <div class="welcome-content">
+                <div class="hero-text">
+                    <span class="icon">🤖</span>
+                    <h2>Chào mừng bạn đến với AI Quiz!</h2>
+                    <p>Nhập thủ công các câu hỏi và đáp án để đạt độ chính xác 100%.</p>
+                </div>
+
+                <div class="input-card">
+                    <div class="form-group">
+                        <label for="questionInput">📝 Câu hỏi:</label>
+                        <textarea id="questionInput" class="custom-textarea" rows="2" placeholder="Ví dụ: Bảy nguyên tắc kiểm thử phần mềm là gì?"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="answerInput">✅ Đáp án chuẩn:</label>
+                        <textarea id="answerInput" class="custom-textarea" rows="3" placeholder="Nhập câu trả lời chi tiết vào đây..."></textarea>
+                    </div>
+
+                    <button class="btn-add" id="addQuestionBtn">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                        Thêm vào danh sách
+                    </button>
+
+                    <div class="status-bar">
+                        <div class="status-text" id="questionCount">📚 Đã thêm: 0 câu</div>
+                        <button class="btn-clear" id="clearListBtn" disabled>Xóa tất cả</button>
+                    </div>
+
+                    <!-- QUESTION LIST SECTION -->
+                    <div class="question-list-section">
+                        <h3 class="list-title">📋 Danh sách câu hỏi đã lưu</h3>
+                        <div id="questionListContainer" class="question-list">
+                            <p class="empty-state">Chưa có câu hỏi nào. Hãy thêm câu hỏi đầu tiên!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-start" id="startQuizBtn" disabled>🚀 Bắt đầu Quiz</button>
+            </div>
+        </div>
+
+        <!-- SCREEN 2: CHAT -->
+        <div id="chatScreen" class="screen">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="chat-title">
+                        <span class="icon">💬</span>
+                        <div>
+                            <h3>Đang Quiz</h3>
+                            <p class="chat-subtitle" id="chatProgress">Câu 1/10</p>
+                        </div>
+                    </div>
+                    <button class="btn-exit" id="exitQuizBtn" title="Thoát quiz">❌ Thoát</button>
+                </div>
+                <div class="messages-area" id="chatMessages">
+                    <!-- Messages will appear here -->
+                </div>
+                <div class="chat-input-wrapper">
+                    <div class="input-box">
+                        <textarea id="userInput" class="chat-textarea" rows="1" placeholder="Nhập câu trả lời của bạn..."></textarea>
+                        <button class="btn-send" id="sendBtn">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN 3: RESULTS -->
+        <div id="resultsScreen" class="screen">
+            <div class="results-content">
+                <div class="hero-text">
+                    <span class="icon">🎉</span>
+                    <h2>Hoàn thành Quiz!</h2>
+                    <p>Dưới đây là chi tiết kết quả của bạn</p>
+                </div>
+                <div id="resultsContent" class="results-body"></div>
+                <button class="btn-start" id="restartBtn" style="margin-top: 20px;">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+                        <polyline points="1 4 1 10 7 10"></polyline>
+                        <polyline points="23 20 23 14 17 14"></polyline>
+                        <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+                    </svg>
+                    Làm lại Quiz mới
+                </button>
+            </div>
+        </div>
+
+        <!-- LOADING OVERLAY -->
+        <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+            <div class="loading-card">
+                <div class="spinner"></div>
+                <p class="loading-text">Đang xử lý...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SETTINGS MODAL -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚙️ Cấu hình Hệ thống</h3>
+                <button class="btn-close" id="closeSettingsBtn">✕</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-intro">Chỉ cần thiết khi bạn bật tính năng AI viết lại câu hỏi.</p>
+                
+                <div class="form-group">
+                    <label for="groqApiKey">Groq API Key (Nhanh nhất)</label>
+                    <div class="api-test-row">
+                        <input type="password" id="groqApiKey" placeholder="gsk_...">
+                        <button type="button" onclick="testGroqAPI()">Test</button>
+                    </div>
+                    <div id="groqStatus" class="api-status"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="geminiApiKey">Gemini API Key (Chat/Đánh giá)</label>
+                    <div class="api-test-row">
+                        <input type="password" id="geminiApiKey" placeholder="AIza...">
+                        <button type="button" onclick="testGeminiAPI()">Test</button>
+                    </div>
+                    <div id="geminiStatus" class="api-status"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="hfApiKey">HuggingFace Token (Dự phòng)</label>
+                    <div class="api-test-row">
+                        <input type="password" id="hfApiKey" placeholder="hf_...">
+                        <button type="button" onclick="testHuggingFaceAPI()">Test</button>
+                    </div>
+                    <div id="hfStatus" class="api-status"></div>
+                </div>
+
+                <button type="button" class="btn-test-all" onclick="testAllAPIs()">
+                    🔍 Kiểm tra tất cả API
+                </button>
+
+                <div class="divider"></div>
+
+                <h4 class="section-title">📋 Tùy chọn Quiz</h4>
+                
+                <div class="toggle">
+                    <div class="toggle-label">
+                        <strong>🔀 Trộn câu hỏi</strong>
+                        <span>Đảo ngẫu nhiên thứ tự các câu hỏi</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="shuffleQuestions">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="toggle">
+                    <div class="toggle-label">
+                        <strong>✨ AI tạo câu hỏi</strong>
+                        <span>Dùng AI viết lại câu hỏi tự nhiên hơn (Cần API)</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="aiGenerateQuestions" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn-save" id="saveSettingsBtn">Lưu cài đặt</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
